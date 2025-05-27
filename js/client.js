@@ -33,6 +33,7 @@ socket.on("receive_message", (data) => {
   messageElement.classList.add("message", "leftMessage");
   messageElement.innerHTML = `<strong>${data.name}:</strong> ${data.data}`;
   messagescontainer.appendChild(messageElement);
+  messagescontainer.scrollTop = messagescontainer.scrollHeight; // Scroll to bottom
 });
 
 // Handle form submission
@@ -46,6 +47,7 @@ form.addEventListener("submit", (e) => {
     messageElement.classList.add("message", "rightMessage");
     messageElement.innerHTML = `<strong>You:</strong> ${message}`;
     messagescontainer.appendChild(messageElement);
+    messagescontainer.scrollTop = messagescontainer.scrollHeight; // Scroll to bottom
     messageInput.value = ""; // Clear input field
   }
 });
