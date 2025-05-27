@@ -1,6 +1,5 @@
 const socket = io("http://localhost:8000");
 const messageInput = document.getElementById("chat-input");
-const sendBtn = document.getElementById("send-button");
 const form = document.getElementById("chat-form");
 const messagescontainer = document.getElementById("chat-messages");
 const leftMessage = document.querySelector(".leftMessage");
@@ -16,7 +15,6 @@ function appendNotificationMessage(message) {
   );
   notificationElement.innerText = message;
   messagescontainer.appendChild(notificationElement);
-  messagescontainer.scrollTop = messagescontainer.scrollHeight; // auto-scroll
 }
 // Send user join event
 const name = prompt("Enter your name:");
@@ -35,8 +33,8 @@ socket.on("receive_message", (data) => {
   messageElement.classList.add("message", "leftMessage");
   messageElement.innerHTML = `<strong>${data.name}:</strong> ${data.data}`;
   messagescontainer.appendChild(messageElement);
-  messagescontainer.scrollTop = messagescontainer.scrollHeight; // auto-scroll
 });
+
 // Handle form submission
 form.addEventListener("submit", (e) => {
   e.preventDefault();
@@ -48,7 +46,6 @@ form.addEventListener("submit", (e) => {
     messageElement.classList.add("message", "rightMessage");
     messageElement.innerHTML = `<strong>You:</strong> ${message}`;
     messagescontainer.appendChild(messageElement);
-    messagescontainer.scrollTop = messagescontainer.scrollHeight; // auto-scroll
     messageInput.value = ""; // Clear input field
   }
 });
