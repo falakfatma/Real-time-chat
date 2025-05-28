@@ -1,4 +1,4 @@
-const socket = io("http://localhost:8000");
+const socket = io("https://falakfatma.github.io/Real-time-chat/page.html");
 const messageInput = document.getElementById("chat-input");
 const form = document.getElementById("chat-form");
 const messagescontainer = document.getElementById("chat-messages");
